@@ -25,12 +25,10 @@ void LinkedList::_insert(const int idx, const int value) {
     }
 
     cur->next = new Node(value, cur->next);
-
-    ++_size;
 }
 
 int& LinkedList::_at(const int idx) const {
-    CHECK_BOUND(idx, _size)
+    CHECK_BOUND(idx, _size);
     Node* cur = _dummy;
     int   i   = 0;
     while (i < idx) {
@@ -57,9 +55,6 @@ void LinkedList::_push_front(const int value) {
 }
 
 void LinkedList::_pop_back() {
-    if (_size == 0) {
-        return;
-    }
     Node* cur = _dummy;
     for (int i = 0; i < _size - 1; ++i) {
         cur = cur->next;
@@ -74,6 +69,15 @@ void LinkedList::_pop_front() {
     }
 
     SAFE_DELETE(front);
+}
+
+LinkedList::~LinkedList() {
+    Node* cur = _dummy;
+    while (cur) {
+        Node* next = cur->next;
+        SAFE_DELETE(cur);
+        cur = next;
+    }
 }
 
 }   // namespace ex_1_1

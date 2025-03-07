@@ -13,6 +13,7 @@ public:
     LinkedList();
     int _front();
     int _back();
+    ~LinkedList();
 
 protected:
     Node* const _dummy;

@@ -4,7 +4,7 @@ public:
     List() = default;
     List(const int);
     List(const int, const int);
-    virtual ~List() = 0;
+    virtual ~List() = default;
     void push_front(const int);
     void pop_front();
     void push_back(const int);
