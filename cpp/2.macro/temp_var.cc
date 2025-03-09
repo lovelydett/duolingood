@@ -13,14 +13,9 @@
         _a > _b ? _a : _b;  \
     })
 
-// Better alternative:
+// Better alternative: (const T& can match both r and l values)
 template <typename T>
-inline T max(T&& a, T&& b) {
-    return a > b ? a : b;
-}
-
-template <typename T>
-inline T max(const T& a, const T& b) {
+inline const T &max(const T& a, const T& b) {
     return a > b ? a : b;
 }
 
