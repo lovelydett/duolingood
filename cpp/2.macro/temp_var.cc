@@ -13,6 +13,17 @@
         _a > _b ? _a : _b;  \
     })
 
+// Better alternative:
+template <typename T>
+inline T max(T&& a, T&& b) {
+    return a > b ? a : b;
+}
+
+template <typename T>
+inline T max(const T& a, const T& b) {
+    return a > b ? a : b;
+}
+
 int main(int argc, char** argv) {
     int a = 1, b = 1;
 
@@ -25,6 +36,9 @@ int main(int argc, char** argv) {
     a = 1, b = 1;
     // This oututs 2, avoid re-executing expression
     std::cout << MAX2(++a, b) << std::endl;
+
+    a = 1, b = 1;
+    std::cout << max(a + 1, b) << std::endl;
 
     return 0;
 }
